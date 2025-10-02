@@ -66,3 +66,7 @@ A simple RESTful API for managing blog posts built with TypeScript, Express.js, 
 - Node + TypeScript + Express.js
 - MySQL db
 - Error handling with transactions
+
+## Roadmap
+
+- https://roadmap.sh/projects/blogging-platform-api
