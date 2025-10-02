@@ -25,7 +25,15 @@ export const createNewPost = catchAsync(async (req, res, next) => {
 });
 
 export const getAllPosts = catchAsync(async (req, res, next) => {
-  const [result] = await db.execute<RowDataPacket[]>("select * from blogs");
+  const { term = "" } = req.query;
+  let query = "select * from blogs";
+  let params = [];
+  if (term) {
+    query += " where title like ? or content like ? or category like ?";
+    const wildcard = `%${term}%`;
+    params.push(wildcard, wildcard, wildcard);
+  }
+  const [result] = await db.execute<RowDataPacket[]>(query, params);
 
   return res.status(HTTP_CODE.OK).json({
     status: STATUS.SUCCESS,
