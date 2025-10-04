@@ -25,7 +25,7 @@ app.use(helmet());
 // req query params is parsed with complete info
 app.set("query parser", "extended");
 
-app.use("/posts", postRouter);
+app.use("/api/v1/posts", postRouter);
 
 // global error controller here
 app.use(errorController);
